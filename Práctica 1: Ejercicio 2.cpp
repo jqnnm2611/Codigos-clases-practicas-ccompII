@@ -1,10 +1,11 @@
 #include <iostream>
 using namespace std;
 
+//REDUCCION DE ARRAYS POR GRUPOS (completar)
+
 int main()
 {
   
-    //REDUCCION DE ARRAYS POR GRUPOS (completar)
     int n = 11;
     int A[n] = {3,1,0,-5,2,3,4,2,0,1,5};
     for(int* p = A; p < A + n; p++)
