@@ -1,9 +1,10 @@
 #include <iostream>
 using namespace std;
 
+//ALINEAR LOS CARACTERES DE UN ARRAY A LA DERECHA
+
 int main()
 {
-    //ALINEAR LOS CARACTERES DE UN ARRAY A LA DERECHA
 
     //solucion con indices
     int tam = 11;
