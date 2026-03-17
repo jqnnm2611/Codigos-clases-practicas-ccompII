@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-//REDUCCIÓN DE ARRAY
+//REDUCCIÓN DE ARRAY POR GRUPOS
 
 int main()
 {
