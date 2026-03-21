@@ -17,12 +17,19 @@ int main() {
     //algoritmo
     bool rdc = true;
     while(rdc){
+        //rdc = false;
         for(int*p = A; p < A + n; p++){
-            for(int*q = p+1; *q == *p; q++){
-                cout << "prueba" << endl;
+            int* q = p + 1;
+            if(*q != *p)
+                continue;
+            else{
+                while(*q == *p)
+                    q++;
+                for(; q >= p; q--)
+                    *q = 0;
             }
         }
-        rdc = false;
+        
     }
     
     //imprimir
