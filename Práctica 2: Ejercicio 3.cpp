@@ -33,5 +33,11 @@ int main() {
         b--;
     }
     
+    for(char* c = a; c <= b; c++){
+        char temp = *c;
+        *c = *(c + 1);
+        *(c + 1) = temp;
+    }
+    
     return 0;
 }
