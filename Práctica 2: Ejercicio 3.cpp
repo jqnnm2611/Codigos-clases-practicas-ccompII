@@ -6,6 +6,10 @@ int main() {
     int tam = 12;
     char A[tam] = {' ',' ',' ',' ','j','a','v','a',' ','+',' ',' '};
     
+    for(char* d = A; d < A + n; d++)
+        cout << *d << ",";
+    cout << endl;
+    
     int espacios = 0;
     char* p = A;
     while(*p == ' '){
@@ -38,6 +42,10 @@ int main() {
         *c = *(c + 1);
         *(c + 1) = temp;
     }
+    
+    for(char* d = A; d < A + n; d++)
+        cout << *d << ",";
+    cout << endl;
     
     return 0;
 }
