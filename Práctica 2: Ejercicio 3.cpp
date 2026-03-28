@@ -6,7 +6,7 @@ int main() {
     int tam = 12;
     char A[tam] = {' ',' ',' ',' ','j','a','v','a',' ','+',' ',' '};
     
-    for(char* d = A; d < A + n; d++)
+    for(char* d = A; d < A + tam; d++)
         cout << *d << ",";
     cout << endl;
     
@@ -33,17 +33,16 @@ int main() {
     int temp2 = 0;
     char* b = A + tam - 1;
     while(temp2 != espacios_final){
-        temp++;
+        temp2++;
         b--;
     }
+    b++;
     
     for(char* c = a; c <= b; c++){
-        char temp = *c;
-        *c = *(c + 1);
-        *(c + 1) = temp;
+    *c = *(c + 1);
     }
     
-    for(char* d = A; d < A + n; d++)
+    for(char* d = A; d < A + tam; d++)
         cout << *d << ",";
     cout << endl;
     
