@@ -11,19 +11,20 @@ int main() {
         cout << *d << ",";
     cout << endl;
     
-    int espacios = 0;
+    int espacios1 = 0;
     char* p = A;
     while(*p == ' '){
-        espacios++;
+        espacios1++;
         p++;
     }
+    int espacios2 = 0;
     char* q = A + tam - 1;
     while(*q == ' '){
-        espacios++;
+        espacios2++;
         q--;
     }
     
-    int espacios_final = espacios / 2;
+    int espacios_final = (espacios1 + espacios2) / 2;
     int temp = 0;
     char* a = A;
     while(temp != espacios_final){
