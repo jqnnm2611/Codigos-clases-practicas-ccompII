@@ -44,8 +44,8 @@ int main() {
     cout << endl;
     cout << endl;
     
-    //e)Elaborar un programa que recorra cada fila de una cara de la matriz 3D e imprima la cantidad de minas (grupos de unos contiguos) en cada fila. En la Fig.1 para la primera cara debe imprimir 1,3,2,1,1,1,1,1,1,1  (arreglar)
-    for(int (*q)[colu] = *C; q < *C + fila; q++){
+    //e)Elaborar un programa que recorra cada fila de una cara de la matriz 3D e imprima la cantidad de minas (grupos de unos contiguos) en cada fila. En la Fig.1 para la primera cara debe imprimir 1,3,2,1,1,1,1,1,1,1
+    for(int(*q)[colu] = *C; q < *C + fila; q++){
         int minas_fila1 = 0;
         for(int* r = *q; r < *q + colu; r++){
             if(*r == 1){
@@ -77,7 +77,16 @@ int main() {
     }
     
     //g)Elaborar un programa que recorra una cara de la matriz 3D e imprima la cantidad de minas (grupos de unos contiguos). En la Fig.1 para la primera cara debe imprimir 3
-    
+    int minas_cara1 = 0;
+    for(int(*q)[colu] = *C; q < *C + fila; q++){
+        for(int* r = *q; r < *q + colu; r++){
+            if(*r == 1){
+                int* s = r;
+                *s = 2;
+                while((*(s+1)==1 && s+1<*q+colu) || (*(s+colu-1)==1 && s+colu-1<))
+            }
+        }
+    }
 
 
     
