@@ -45,33 +45,27 @@ int main() {
     cout << endl;
     
     //e)Elaborar un programa que recorra cada fila de una cara de la matriz 3D e imprima la cantidad de minas (grupos de unos contiguos) en cada fila. En la Fig.1 para la primera cara debe imprimir 1,3,2,1,1,1,1,1,1,1  (arreglar)
-    for(int (*q)[colu] = *C; q < *C + fila; q++){  // recorre filas
-    int minas = 0;
-
-    for(int* r = *q; r < *q + colu; r++){     // recorre columnas
-        if(*r == 1){
-            // inicio de una mina
-            if(r == *q || *(r - 1) == 0){
-                minas++;
+    for(int (*q)[colu] = *C; q < *C + fila; q++){
+        int minas_fila1 = 0;
+        for(int* r = *q; r < *q + colu; r++){
+            if(*r == 1){
+                if(r == *q || *(r - 1) == 0)
+                    minas_fila1++;
             }
         }
+        if(minas_fila1 != 0)
+            cout << minas_fila1 << ',';
     }
-
-    if(minas > 0)
-        cout << minas << ',';
-}
-
-cout << endl;
+    cout << endl;
+    cout << endl;
     
     //f)Elaborar un programa que recorra cada fila de cada cara de la matriz 3D e imprima la cantidad de minas (grupos de unos contiguos) en cada fila de cada cara. Los resultados de una fila en un renglón de la pantalla. En la Fig.1 debería imprimir: 1,3,2,1,1,1,1,1,1,1 - 2,2,1 - 1,1,2,2,2,2
     int minas_fila2 = 0;
     for(int(*p)[fila][colu] = C; p < C + cara; p++){
         for(int(*q)[colu] = *p; q < *p + fila; q++){
             for(int* r = *q; r < *q + colu; r++){
-                if(r == *q+colu-1 && *r == 1 && *(r-1) == 0)
-                    minas_fila2++;
-                else if(*r == 1){
-                    if(*(r+1) == 0)
+                if(*r == 1){
+                    if(r == *q || *(r - 1) == 0)
                         minas_fila2++;
                 }
             }
@@ -81,6 +75,16 @@ cout << endl;
         }
         cout << endl;
     }
+    
+    //g)Elaborar un programa que recorra una cara de la matriz 3D e imprima la cantidad de minas (grupos de unos contiguos). En la Fig.1 para la primera cara debe imprimir 3
+    
+
+
+    
+    
+    
+    
+    
     
     return 0;
 }
