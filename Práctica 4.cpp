@@ -1,11 +1,18 @@
 #include <iostream>
 using namespace std;
 
-int encontrar(int* a, fil, colu){
-    if(*(a*1)==1){
-        *(a+1)=2;
-        a = a+1;
+int minas_cara1 = 0;
+int encontrar_cara(int* a, int fil, int colu){
+    int* b = a;
+    if(*(b+colu-1)==1){
+        *(b+colu-1)=2;
+        b = b+1;
     }
+    if(*(b+1)==1){
+        *(b+1)=2;
+        b = b+1;
+    }
+    return 0;
 }
 
 int main() {
@@ -84,8 +91,7 @@ int main() {
     }
     
     //g)Elaborar un programa que recorra una cara de la matriz 3D e imprima la cantidad de minas (grupos de unos contiguos). En la Fig.1 para la primera cara debe imprimir 3
-    int minas_cara1 = 0;
-    for(int(*q)[colu] = *C; q < *C + fila; q++){
+    /* for(int(*q)[colu] = *C; q < *C + fila; q++){
         for(int* r = *q; r < *q + colu; r++){
             if(*r == 1){
                 int* s = r;
@@ -94,7 +100,7 @@ int main() {
                 encontrar(*s);
             }
         }
-    }
+    } */
 
 
     
