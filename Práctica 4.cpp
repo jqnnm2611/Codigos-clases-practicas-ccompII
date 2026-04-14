@@ -1,6 +1,13 @@
 #include <iostream>
 using namespace std;
 
+int encontrar(int* a, fil, colu){
+    if(*(a*1)==1){
+        *(a+1)=2;
+        a = a+1;
+    }
+}
+
 int main() {
     
     //a)Elaborar un programa en C++ que represente un territorio con minas por medio de un   array 3D de enteros x ϵ {0,1}, donde grupos contiguos de unos representan una mina y números cero representan espacios sin mineral (celdas en blanco en la Fig.1)
@@ -84,6 +91,7 @@ int main() {
                 int* s = r;
                 *s = 2;
                 while((*(s+1)==1 && s+1<*q+colu) || (*(s+colu-1)==1 && s+colu-1<))
+                encontrar(*s);
             }
         }
     }
