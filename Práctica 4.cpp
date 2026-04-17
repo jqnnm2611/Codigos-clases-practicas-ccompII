@@ -1,19 +1,32 @@
 #include <iostream>
 using namespace std;
 
-int minas_cara1 = 0;
-int encontrar_cara(int* a, int fil, int colu){
-    int* b = a;
-    if(*(b+colu-1)==1){
-        *(b+colu-1)=2;
-        b = b+1;
-    }
-    if(*(b+1)==1){
-        *(b+1)=2;
-        b = b+1;
-    }
-    return 0;
+void encontrar_cara(int* inicio, int* actual, int fila, int colu){
+    if(actual < inicio || actual >= inicio + fila*colu)
+        return;
+    if(*actual != 1)
+        return;
+    *actual = 2;
+    int pos = actual - inicio;
+    int col = pos % colu;
+    if(col < colu - 1)
+        encontrar_cara(inicio, actual + 1, fila, colu);
+    if(col > 0)
+        encontrar_cara(inicio, actual - 1, fila, colu);
+    if(actual + colu < inicio + fila*colu)
+        encontrar_cara(inicio, actual + colu, fila, colu);
+    if(actual - colu >= inicio)
+        encontrar_cara(inicio, actual - colu, fila, colu);
+    if(col < colu - 1 && actual + colu + 1 < inicio + fila*colu)
+        encontrar_cara(inicio, actual + colu + 1, fila, colu);
+    if(col > 0 && actual + colu - 1 < inicio + fila*colu)
+        encontrar_cara(inicio, actual + colu - 1, fila, colu);
+    if(col < colu - 1 && actual - colu + 1 >= inicio)
+        encontrar_cara(inicio, actual - colu + 1, fila, colu);
+    if(col > 0 && actual - colu - 1 >= inicio)
+        encontrar_cara(inicio, actual - colu - 1, fila, colu);
 }
+
 
 int main() {
     
@@ -89,24 +102,43 @@ int main() {
         }
         cout << endl;
     }
+    cout << endl;
     
     //g)Elaborar un programa que recorra una cara de la matriz 3D e imprima la cantidad de minas (grupos de unos contiguos). En la Fig.1 para la primera cara debe imprimir 3
-    /* for(int(*q)[colu] = *C; q < *C + fila; q++){
-        for(int* r = *q; r < *q + colu; r++){
+    int minas_cara1 = 0;
+    int* inicio = **C;
+    for(int* p = inicio; p < inicio + fila*colu; p++){
+        if(*p == 1){
+            minas_cara1++;
+            encontrar_cara(inicio, p, fila, colu);
+        }
+    }
+    for(int* p = **C; p < **C + (fila*colu); p++){
+    if(*p == 2)
+        *p = 1;
+    }
+    cout << minas_cara1 << endl;
+    cout << endl;
+    
+    //h)Elaborar un programa que recorra cada cara de la matriz 3D imprima la cantidad de minas (grupos de unos contiguos) de cada cara. En la Fig.1 el programa debe mostrar como resultado 3,3,3.
+    int minas_cara2 = 0;
+    for(int(*p)[fila][colu] = C; p < C + cara; p++){
+        int* inicio = **p;
+        for(int* r = inicio; r < inicio + fila*colu; r++){
             if(*r == 1){
-                int* s = r;
-                *s = 2;
-                while((*(s+1)==1 && s+1<*q+colu) || (*(s+colu-1)==1 && s+colu-1<))
-                encontrar(*s);
+                minas_cara2++;
+                encontrar_cara(inicio, r, fila, colu);
             }
         }
-    } */
-
-
-    
-    
-    
-    
+        cout << minas_cara2 << ',';
+        minas_cara2 = 0;
+        for(int* r = inicio; r < inicio + fila*colu; r++){
+            if(*r == 2)
+                *r = 1;
+        }
+    }
+    cout << endl;
+    cout << endl;
     
     
     return 0;
