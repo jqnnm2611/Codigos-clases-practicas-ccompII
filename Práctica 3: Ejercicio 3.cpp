@@ -35,9 +35,9 @@ int main(){
     }
     
     if(q != A + n - 1){
-        char* c = A;
+        char* c = q;
         while(*c != ' ')
-            c++;
+            c--;
 
         char* q_temp = A + n - 1;
         for(; q > c; q--, q_temp--){
