@@ -9,6 +9,7 @@ int main() {
     for(int** f = A; f < A + filas; f++){
         *f = new int[columnas];
     }
+    
     for(int** a = A; a < A + filas; a++){
         for(int* b = *a; b < *a + columnas; b++){
             if(a == A || a == A + filas - 1)
@@ -25,10 +26,10 @@ int main() {
     
     for(int** p = A; p < A + filas; p++){
         for(int* q = *p; q < *p + columnas; q++){
-            if(*q == 0|| not(q == *p + columnas - 1))
-                cout << ' ' << ' ' << ' ' << *q;
+            if(*q == 0)
+                cout << ' ' << ' ' << ' ' << *q << ' ';
             else if (*q == 100)
-                cout << ' '
+                cout << ' ' << *q << ' ';
             else 
                 cout << *q << ' ';
         }
