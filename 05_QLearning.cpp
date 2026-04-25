@@ -36,5 +36,13 @@ int main() {
         cout << endl;
     }
     
+    for(int** p = A + filas - 1; p >= A; p--){
+        for(int* q = *p + columnas - 1; q >= *p; q--){
+            if(*q != -100){
+                if
+            }
+        }
+    }
+    
     return 0;
 }
