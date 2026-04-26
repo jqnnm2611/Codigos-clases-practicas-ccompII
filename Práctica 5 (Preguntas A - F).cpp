@@ -120,7 +120,6 @@ int main() {
     int*** filaActual = B + 1;
     int col = 1;
     int** ini1 = *filaActual + col;
-    int** fin1 = *(B + 12) + 5;
     int** ptrE = ini1;
     while(**ptrE != 100){
         if(*(*ptrE + 1) == 1){
@@ -134,6 +133,7 @@ int main() {
             col++;
         }
     }
+    **ptrE = 0;
     
 //F. Imprima tanto la matriz original con sus recompensas y la matriz final con ceros en la recompensa, mostrando el recorrido. Las Impresiones del array deben ser cada fila en una línea diferente en la pantalla.
 
