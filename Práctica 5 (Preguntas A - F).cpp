@@ -131,6 +131,7 @@ int main() {
         else if(*(*ptrE + 1) == 3){
             **ptrE = 0;
             ptrE++;
+            col++;
         }
     }
     
