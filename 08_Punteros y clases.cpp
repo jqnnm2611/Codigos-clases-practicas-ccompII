@@ -14,13 +14,17 @@ class MiClase{
 };
 
 int main() {
+  
     
-    MiClase uno(5,4);
-    //Puntero a miembro dato
-    int MiClase:: *p = &MiClase::x;
-    cout << uno.*p << endl;
-    p = &MiClase::y;
-    cout << uno.*p << endl;
+  MiClase uno(5,4);
+  //Puntero a miembro dato
+  int MiClase:: *p = &MiClase::x;
+  cout << uno.*p << endl;
+  p = &MiClase::y;
+  cout << uno.*p << endl;
+  //Puntero a método
+  void (MiClase::*q)();
+  q = &MiClase::imprimirx;
     
-    return 0;
+  return 0;
 }
