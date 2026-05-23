@@ -51,8 +51,14 @@ int main() {
     //E. Cree un programa que se encargue de realizar el recorrido completo de acuerdo al array de configuración y haciendo uso del array de punteros a función, sobre la matriz de forma que cada celda recorrida quede con el valor de 0
     int* a = *A;
     for(int* b = B; b < B + tam_mov; b++){
-        a = funciones[*b](a, columnas);
+        int* (*f)(int*, int) = *(funciones + *b);
+        a = f(a, columnas);
         *a = 0;
+        /*int* (**f)(int*, int) = funciones;
+        f += *b;
+        a = (*f)(a, columnas);
+        *a = 0;
+        */
     }
     
     //F. Cree un programa que imprima la matriz con el recorrido resultante donde cada fila de la matriz quede impresa en cada fila de la pantalla
@@ -77,8 +83,15 @@ int main() {
     int* (Movimiento::*metodos[tam_c])(int*, int) = {&Movimiento::Vertical,&Movimiento::Horizontal};
     int* c = *A;
     for(int* b = B; b < B + tam_mov; b++){
-        c = (mov.*metodos[*b])(c, columnas);
+        int* (Movimiento::*m)(int*, int) = *(metodos + *b);
+        c = (mov.*m)(c, columnas);
         *c = 0;
+        /*int movActual = *b;
+        int* (Movimiento::*(*m))(int*, int) = metodos;
+        pm += movActual;
+        c = (mov.*(*m))(c, columnas);
+        *c = 0;
+        */
     }
     for(int(*p)[columnas] = A; p < A + filas; p++){
         for(int* q = *p; q < *p + columnas; q++){
