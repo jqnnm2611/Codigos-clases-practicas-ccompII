@@ -13,6 +13,15 @@ class MiClase{
   void imprimiry(){cout << y << endl;}
 };
 
+class MiClase2{
+  public:
+  char x;
+  char y;
+  void imprimir(char z){
+      cout << z << endl;
+  }
+};
+
 int main() {
   
     
@@ -23,8 +32,10 @@ int main() {
   p = &MiClase::y;
   cout << uno.*p << endl;
   //Puntero a método
-  void (MiClase::*q)();
-  q = &MiClase::imprimirx;
+  void(MiClase2:: *r)(char);
+  r = &MiClase2::imprimir;
+  MiClase2 obj;
+  (obj.*r)('d');
     
   return 0;
 }
