@@ -47,6 +47,25 @@ class Exp{
         }
 };
 
+int cubo(int x){
+    return x*x*x;
+}
+
+template<class T, int n = 0>
+class suma{
+    private:
+        T x = n;
+    public:
+        T operator()(T op){
+            return x + op;
+        }
+};
+template<class O>
+class Ejecuta{
+    public:
+        O operador;
+};
+
 int main() {
     
     mifuncion f1(5,2); //configuración
@@ -56,16 +75,25 @@ int main() {
     Line l1(4,2); //configuración
     for(int x = 1; x < 10; x++)
         cout << l1(x) << endl;
-    Line_T<double> l2(3.4, 5.6);
+    Line_T<double> l2(3.3, 5.9);
     for(int x = 1; x < 10; x++)
         cout << l2(x) << endl;
     cout << endl;
     
     int arr[] = {1,2,3,4};
     Exp e(3);
+    /*
+    int(*p)(int) = cubo;
+    transform(arr, arr+4, arr, p);
+    */
     transform(arr, arr+4, arr, e);
     for(int* p = arr; p < arr+4; p++)
         cout << *p << endl;
+    cout << endl;
+    
+    //suma<int> objsuma;
+    Ejecuta<suma<int,6>> exe;
+    cout << exe.operador(5) << endl;
     
     return 0;
 }
