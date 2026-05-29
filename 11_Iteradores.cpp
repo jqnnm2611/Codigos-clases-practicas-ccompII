@@ -2,15 +2,18 @@
 #include <vector>
 using namespace std;
 
-bool mult(int x, int y){
-    if(x % y == 0)
+bool mult(int x){
+    if(x % 2 == 0)
         return true;
     return false;
 }
 
 class multi{
+    private:
+        int y;
     public:
-        bool operator()(int x, int y){
+        multi(int a):y(a){}
+        bool operator()(int x){
             if(x % y == 0)
                 return true;
             return false;
@@ -50,7 +53,7 @@ vector<int> find_matching(vector<int> v, T m){
     vector<int>::iterator it = v.begin();
     vector<int>::iterator end = v.end();
     while(it != end){
-        if(m(*it, 2))
+        if(m(*it))
             res.push_back(*it);
         it++;
     }
@@ -66,10 +69,9 @@ int main() {
     v1.push_back(4);
     v1.push_back(5);
     
-    /*bool(*f1)(int, int) = mult;   //función
-    vector<int> v2 = find_matching(v1, f1);*/
-    multi m1;   //functor
-    vector<int> v2 = find_matching(v1, m1);
+    bool(*f1)(int) = mult;   //función
+    multi m1(2);   //functor
+    vector<int> v2 = find_matching(v1, f1);
     vector<int>::iterator it = v2.begin();
     vector<int>::iterator end = v2.end();
     while(it != end){
