@@ -8,12 +8,49 @@ bool mult(int x, int y){
     return false;
 }
 
-vector<int> find_matching(vector<int> v, bool(*f)(int, int)){
+class multi{
+    public:
+        bool operator()(int x, int y){
+            if(x % y == 0)
+                return true;
+            return false;
+        }
+};
+
+//Función usando función
+/*vector<int> find_matching(vector<int> v, bool(*f)(int, int)){
     vector<int> res;
     vector<int>::iterator it = v.begin();
     vector<int>::iterator end = v.end();
     while(it != end){
         if(f(*it, 2))
+            res.push_back(*it);
+        it++;
+    }
+    return res;
+}*/
+
+//Función usando functor
+/*vector<int> find_matching(vector<int> v, multi m){
+    vector<int> res;
+    vector<int>::iterator it = v.begin();
+    vector<int>::iterator end = v.end();
+    while(it != end){
+        if(m(*it, 2))
+            res.push_back(*it);
+        it++;
+    }
+    return res;
+}*/
+
+//Función usando templates
+template<class T>
+vector<int> find_matching(vector<int> v, T m){
+    vector<int> res;
+    vector<int>::iterator it = v.begin();
+    vector<int>::iterator end = v.end();
+    while(it != end){
+        if(m(*it, 2))
             res.push_back(*it);
         it++;
     }
@@ -29,14 +66,16 @@ int main() {
     v1.push_back(4);
     v1.push_back(5);
     
-    bool(*f1)(int, int) = mult;
-    vector<int> v2 = find_matching(v1, f1);
+    /*bool(*f1)(int, int) = mult;   //función
+    vector<int> v2 = find_matching(v1, f1);*/
+    multi m1;   //functor
+    vector<int> v2 = find_matching(v1, m1);
     vector<int>::iterator it = v2.begin();
     vector<int>::iterator end = v2.end();
     while(it != end){
       cout << *it << ',';
       it++;
-      }
+    }
     cout << endl;
     
     return 0;
