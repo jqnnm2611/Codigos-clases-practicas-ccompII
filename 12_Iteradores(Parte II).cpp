@@ -1,10 +1,14 @@
 #include <iostream>
 using namespace std;
 
+template<class T>  //predefinición de la clase Vector
+class Vector;
+
 template<class T>
 class Iterator{
     T* it;
     public:
+        friend class Vector<T>;  //se declara como clase amiga para acceder a su parte privada (parte del operador ++)
         Iterator(){  //Constructor por defecto
             it = nullptr;
         } 
@@ -17,7 +21,7 @@ class Iterator{
         T operator*(){  //sobrecarga de *  
             return *it;
         }
-        Iterator operator++(int){  //sobrecarga de ++
+        Iterator operator++(int){  //sobrecarga de ++ (accediendo a la parte privada de Vector)
             it++;
             return *this;
         }
