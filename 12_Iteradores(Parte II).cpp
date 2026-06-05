@@ -37,7 +37,7 @@ template<class T>
 class Vector{
     T a[5];
     public:
-        typedef Iterator<int> iter;
+        typedef Iterator<T> iter;
         iter begin(){
             return iter(&a[0]);
         }
